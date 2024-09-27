@@ -7,7 +7,68 @@ int main()
 {
     int num1;
     cout << "Enter the number of the question you would like to see (1 or 2): ";
-    cin 
+    cin >> num1;
+
+    switch (num1) {
+    default:
+        cout << "Invalid number";
+        break;
+    case 1:
+        int dataPrices[] = { 30, 50, 80 };
+        int callSmsPrices[] = { 30, 50 };
+        int packageChoice, dataChoice, callSmsChoice;
+        double totalPrice;
+
+        cout << "Select package: " << endl;
+        cout << "1. Data" << endl;
+        cout << "2. Call and SMS" << endl;
+        cout << "3. Data + Call and SMS" << endl;
+        cin >> packageChoice;
+
+        if (packageChoice == 1) {
+            cout << "Select a data plan:\n";
+            cout << "1. 20 G for 30 days - $30\n";
+            cout << "2. 50 G for 60 days - $50\n";
+            cout << "3. 100 G for 90 days - $80\n";
+            cin >> dataChoice;
+
+            totalPrice = dataPrices[dataChoice - 1];
+            cout << "Total Price: $" << totalPrice << endl;
+        }
+
+        else if (packageChoice == 2) {
+            cout << "Select a Call and SMS plan:\n";
+            cout << "1. 60 min + 100 SMS/month - $30\n";
+            cout << "2. 120 min + 200 SMS/month - $50\n";
+            cin >> callSmsChoice;
+
+            totalPrice = callSmsPrices[callSmsChoice - 1];
+            cout << "Total Price: $" << totalPrice << endl;
+
+        }
+        else if (packageChoice == 3) {
+            cout << "Select a data plan:\n";
+            cout << "1. 20 G for 30 days - $30\n";
+            cout << "2. 50 G for 60 days - $50\n";
+            cout << "3. 100 G for 90 days - $80\n";
+            cin >> dataChoice;
+
+            cout << "Select a Call and SMS plan:\n";
+            cout << "1. 60 min + 100 SMS/month - $30\n";
+            cout << "2. 120 min + 200 SMS/month - $50\n";
+            cin >> callSmsChoice;
+
+            totalPrice = dataPrices[dataChoice - 1] + callSmsPrices[callSmsChoice - 1];
+            totalPrice *= 0.8;
+
+            cout << "Total Price after 20% discount: $" << totalPrice << endl;
+        }
+        else {
+            cout << "Invalid package choice!" << endl;
+        }
+        break;
+    case 2:
+
 
 
 }
