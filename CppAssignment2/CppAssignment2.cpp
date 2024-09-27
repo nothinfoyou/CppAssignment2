@@ -1,10 +1,66 @@
-// CppAssignment2.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
 using namespace std;
+
+class StudentPassScore {
+private:
+    double studentScore; 
+    int yearOfSubject;    
+
+public:
+    StudentPassScore(double score, int year) {
+        studentScore = score;
+        yearOfSubject = year;
+    }
+
+    void passingGradeOne() {
+        if (studentScore >= 50) {
+            cout << "The student passed the 1st-year subject with a score of " << studentScore << endl;
+        }
+        else {
+            cout << "The student failed the 1st-year subject with a score of " << studentScore << endl;
+        }
+    }
+
+    void passingGradeTwo() {
+        if (studentScore >= 55) {
+            cout << "The student passed the 2nd-year subject with a score of " << studentScore << endl;
+        }
+        else {
+            cout << "The student failed the 2nd-year subject with a score of " << studentScore << endl;
+        }
+    }
+
+    void passingGradeThree() {
+        if (studentScore >= 60) {
+            cout << "The student passed the 3rd-year subject with a score of " << studentScore << endl;
+        }
+        else {
+            cout << "The student failed the 3rd-year subject with a score of " << studentScore << endl;
+        }
+    }
+
+    void checkPassingGrade() {
+        if (yearOfSubject == 1) {
+            passingGradeOne();
+        }
+        else if (yearOfSubject == 2) {
+            passingGradeTwo();
+        }
+        else if (yearOfSubject == 3) {
+            passingGradeThree();
+        }
+        else {
+            cout << "Invalid year of subject!" << endl;
+        }
+    }
+};
+
 int main()
 {
+    int dataPrices[] = { 30, 50, 80 };
+    int callSmsPrices[] = { 30, 50 };
+    int packageChoice, dataChoice, callSmsChoice;
+    double totalPrice;
     int num1;
     cout << "Enter the number of the question you would like to see (1 or 2): ";
     cin >> num1;
@@ -14,11 +70,6 @@ int main()
         cout << "Invalid number";
         break;
     case 1:
-        int dataPrices[] = { 30, 50, 80 };
-        int callSmsPrices[] = { 30, 50 };
-        int packageChoice, dataChoice, callSmsChoice;
-        double totalPrice;
-
         cout << "Select package: " << endl;
         cout << "1. Data" << endl;
         cout << "2. Call and SMS" << endl;
@@ -68,18 +119,21 @@ int main()
         }
         break;
     case 2:
+        double score;
+        int year;
 
+        // Reading the student score and year of the subject
+        cout << "Enter the student's score: ";
+        cin >> score;
+        cout << "Enter the year of the subject (1, 2, or 3): ";
+        cin >> year;
 
+        // Create a StudentPassScore object
+        StudentPassScore student(score, year);
+
+        // Check if the student passed based on the year of the subject
+        student.checkPassingGrade();
+        break;
+    }
 
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
